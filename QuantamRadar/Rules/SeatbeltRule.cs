@@ -11,7 +11,7 @@ namespace QuantamRadar.Rules
         {
             if (!carObservation.SeatbeltFastened)
             {
-                return new Violation(RuleName, "Seatbelt is not fastened", FineFee);
+                return new Violation(RuleName, "Seatbelt not fastned", FineFee);
             }
             return null;
         }

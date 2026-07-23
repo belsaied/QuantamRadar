@@ -1,4 +1,6 @@
-﻿namespace QuantamRadar.Models
+﻿using System.Text;
+
+namespace QuantamRadar.Models
 {
     public record Fine (
         string PlateNumber,
@@ -8,15 +10,17 @@
         public decimal TotalAmount => Violations.Sum(v => v.Fee);
         public override string ToString()
         {
-            var lines = new List<string>
-            {
-                $"Trafic of Car {PlateNumber}",
-                $"Total Amount {TotalAmount} EGP",
-                "Violations : "
-            };
+            var builder = new StringBuilder();
+            builder.AppendLine($"Traffic for Car {PlateNumber}");
+            builder.AppendLine($"Total Amount {TotalAmount} EGP");
+            builder.AppendLine("Violations:");
 
-            lines.AddRange(Violations.Select(v => $"{v.Description} : {v.Fee} EGP"));
-            return string.Join(Environment.NewLine, lines);
+            foreach (var violation in Violations)
+            {
+                builder.AppendLine($"- {violation.Description} : {violation.Fee} EGP");
+            }
+
+            return builder.ToString().TrimEnd();
         }
     }
 }

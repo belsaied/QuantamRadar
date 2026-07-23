@@ -34,7 +34,7 @@ namespace QuantamRadar
             return fine;
         }
 
-        public List<(string PlateNumber, decimal TotalAmount)> GetAllFines()
+        public List<(string PlateNumber, decimal TotalAmount)> GetAllPossibleFines()
         {
             return _issuedFines
                 .GroupBy(fine => fine.PlateNumber)

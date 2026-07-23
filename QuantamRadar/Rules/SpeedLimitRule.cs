@@ -17,9 +17,9 @@ namespace QuantamRadar.Rules
         {
            if(_maxAllowedSpeedByCarType.TryGetValue(carObservation.CarType, out int value))
             {
-                if(carObservation.speed > value)
+                if(carObservation.Speed > value)
                 {
-                    string description = $"speed of {carObservation.speed} exceeded the max allowed speed {value}";
+                    string description = $"speed of {carObservation.Speed} exceeded the max allowed speed {value}";
                     return new Violation(RuleName, description, _fineFee);
                 }
             }

@@ -3,7 +3,7 @@
     public sealed record CarObservation(
         string PlateNumber,
         DateTime Date,
-        int speed,
+        int Speed,
         bool SeatbeltFastened,
         CarType CarType )
     {
